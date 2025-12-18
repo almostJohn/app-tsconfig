@@ -4,7 +4,8 @@ export const siteConfig = {
 		template: "%s | tsconfig",
 	},
 	name: "tsconfig",
-	description: "A typescript configuration that you can copy and paste into your projects.",
+	description:
+		"Generate clean, opinionated tsconfig.json setups for modern TypeScript projects.",
 	creator: "@almostJohn",
 };
 

@@ -1,10 +1,9 @@
-import "~/styles/globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
-import { geist } from "~/lib/fonts";
-import { siteConfig } from "~/config/site";
-import { cn } from "~/lib/utils";
-import { Footer } from "~/components/footer";
+import { inter } from "@/util/fonts";
+import { cn } from "@/util/cn";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
 	title: siteConfig.title,
@@ -39,14 +38,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={cn(
-					"bg-neutral-100 text-neutral-900 antialiased",
-					geist.className,
+					"min-h-svh bg-neutral-100 text-neutral-900 antialiased",
+					inter.className,
 				)}
 			>
-				<div className="min-h-screen">
-					{children}
-					<Footer />
-				</div>
+				{children}
 			</body>
 		</html>
 	);
