@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { Copy, CopyCheck } from "lucide-react";
-import { Tabs, TabsContent, TabsTrigger, TabsList } from "./ui/Tabs";
 import {
 	tsConfigTemplateForNextJs,
 	tsConfigTemplateForNodeJs,
 } from "@/util/tsConfigTemplate";
+import { Copy, CopyCheck } from "lucide-react";
+import { useCallback, useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/Tabs";
 
 export function TsConfigEditor() {
 	const [copiedNextJsTsConfig, setCopiedNextJsTsConfig] = useState(false);
 	const [copiedNodeJsTsConfig, setCopiedNodeJsTsConfig] = useState(false);
 
-	const copyNextJsTsConfig = async () => {
+	const copyNextJsTsConfig = useCallback(async () => {
 		try {
 			await navigator.clipboard.writeText(tsConfigTemplateForNextJs);
 			setCopiedNextJsTsConfig(true);
@@ -22,9 +22,9 @@ export function TsConfigEditor() {
 				error instanceof Error ? error.message : "Something went wrong.";
 			console.error(message, error);
 		}
-	};
+	}, [copiedNextJsTsConfig]);
 
-	const copyNodeJsTsConfig = async () => {
+	const copyNodeJsTsConfig = useCallback(async () => {
 		try {
 			await navigator.clipboard.writeText(tsConfigTemplateForNodeJs);
 			setCopiedNodeJsTsConfig(true);
@@ -34,7 +34,7 @@ export function TsConfigEditor() {
 				error instanceof Error ? error.message : "Something went wrong.";
 			console.error(message, error);
 		}
-	};
+	}, [copiedNodeJsTsConfig]);
 
 	return (
 		<Tabs defaultValue="nextjs">
