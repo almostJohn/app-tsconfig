@@ -6,6 +6,10 @@ export const siteConfig = {
 	name: "tsconfig",
 	description:
 		"Generate clean, opinionated tsconfig.json setups for modern TypeScript projects.",
+	url:
+		process.env.NODE_ENV === "production"
+			? "https://app-tsconfig.vercel.app"
+			: "http://localhost:3000",
 	creator: "@almostJohn",
 };
 
